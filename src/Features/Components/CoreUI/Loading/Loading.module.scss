@@ -1,0 +1,28 @@
+@import "../../../_vairables.scss";
+
+.loaderWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $z-index-max;
+  min-height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  .loader {
+    border-right: 10px solid $white;
+    border-radius: $border-radius-50;
+    width: 150px;
+    height: 150px;
+    animation: spin 1ms linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+

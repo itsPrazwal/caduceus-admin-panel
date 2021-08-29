@@ -1,0 +1,45 @@
+//COLORS
+$primary-color: #db5375;
+//$primary-background: #FBF6F0 ;
+$primary-background: #001529;
+$secondary-color: #662e9b;
+$secondary-background: #454545;
+
+//CONSTANT COLORS
+$white: #ffffff;
+$black: #000000;
+$yellow: #FCCB1A ;
+
+//Z-INDEX
+$base-z-index: 10;
+$z-index-max: 9999;
+$z-index-1: $base-z-index * 1;
+$z-index-2: $base-z-index * 2;
+$z-index-3: $base-z-index * 3;
+
+//BORDER RADIUS
+$base-border-radius: 5px;
+$border-radius-1: $base-border-radius * 1;
+$border-radius-2: $base-border-radius * 2;
+$border-radius-3: $base-border-radius * 4;
+$border-radius-25: 25%;
+$border-radius-50: 50%;
+$border-radius-75: 75%;
+$border-radius-100: 100%;
+
+// SCREEN
+$screen-xs: 20em; // 320px
+$screen-sm: 40em; // 640px
+$screen-md: 48em; // 768px
+$screen-lg: 64em; // 1024px
+$screen-xl: 80em; // 1280px
+$screen-xxl: 90em; // 1440px
+
+//GRADIENT SAMPLE
+$gradient-1: linear-gradient(
+  135deg,
+  rgba(255, 199, 35, 1) 0%,
+  rgba(255, 57, 79, 1) 33%,
+  rgba(209, 23, 204, 1) 66%,
+  rgba(152, 18, 245, 1) 100%
+);

@@ -1,0 +1,105 @@
+@import "../../Features/vairables";
+
+.notFoundContainer{
+  height: 100%;
+  background: whitesmoke;
+  .notFoundContent{
+    width: 70%;
+    background-color: $primary-background;
+    border-radius: $border-radius-3;
+    height: 70%;
+    box-shadow: 0 0 10px 0 white;
+    .notFoundTitle{
+      font-size: 130px;
+      background: $gradient-1;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+    .notFoundSubTitle{
+      color: $white;
+      font-size: 50px;
+      letter-spacing: 7px;
+      margin: 20px 0;
+    }
+    .notFoundDetail {
+      color: grey;
+      width: 80%;
+      text-align: center;
+      font-size: 30px;
+      line-height: 40px;
+      margin-bottom: 20px;
+    }
+    .notFoundButtons{
+      .notFoundNav{
+        font-size: 20px;
+        text-align: center;
+        padding: 15px 0;
+        border-radius: $border-radius-2;
+        display: inline-block;
+        border: 2px solid #0e75bd;
+        min-width: 246px;
+        margin: 0 10px;
+        &:hover{ opacity: 0.9; }
+      }
+      .redirectionUrl{
+        background-color: #0e75bd;
+        color: $white;
+      }
+      .problemUrl{
+        background-color: transparent;
+        color: #0e75bd;
+      }
+    }
+  }
+  @media only screen and (max-width: $screen-xs) {
+    .notFoundContent{
+      width: 90%;
+      text-align: center;
+      .notFoundTitle{
+        font-size: 50px;
+      }
+      .notFoundSubTitle{
+        font-size: 20px;
+      }
+      .notFoundDetail{
+        font-size: 10px;
+        line-height: 20px
+      }
+      .notFoundButtons{
+        width: 90%;
+        .notFoundNav{
+          margin: 5px 0;
+          min-width: 100px;
+          width: 100%;
+          font-size: 10px;
+          padding: 10px 0;
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: $screen-xs) and (max-width: $screen-xl) {
+    .notFoundContent{
+      width: 90%;
+      text-align: center;
+      .notFoundTitle{
+        font-size: 70px;
+      }
+      .notFoundSubTitle{
+        font-size: 30px;
+      }
+      .notFoundDetail{
+        font-size: 15px;
+        line-height: 20px
+      }
+      .notFoundButtons{
+        .notFoundNav{
+          font-size: 12px;
+          padding: 10px 20px;
+          margin: 5px 0;
+        }
+      }
+    }
+  }
+}
