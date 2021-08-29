@@ -5,10 +5,11 @@ import { FC, useState } from 'react'
 import { useForm } from 'antd/lib/form/Form'
 
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface'
-import { FunctionWithParam, LoginFieldType } from '../../../Utils/types'
+import { FunctionWithParam } from '../../../Utils/types'
+import { FieldTypeLogin } from '../../../Redux/AuthRedux/AuthTypes'
 
 interface FormLoginProps{
-    onFinish: FunctionWithParam<LoginFieldType>,
+    onFinish: FunctionWithParam<FieldTypeLogin>,
     isLogging: boolean,
 }
 

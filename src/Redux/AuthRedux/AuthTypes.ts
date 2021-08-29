@@ -1,8 +1,7 @@
-import { ErrorObject, GenericObject, Nullable } from '../../Utils/types'
+import { ErrorObject, Nullable } from '../../Utils/types'
 import { OperationStatus } from '../../Utils/enums'
 
 interface AuthReducerState{
-    cognitoDetails: GenericObject,
     error: Nullable<ErrorObject>
     operationStatus: {
         login: Nullable<OperationStatus>,
@@ -15,6 +14,30 @@ interface AuthReducerState{
     userInformation: Nullable<FieldTypeSelfInfoMain>
 }
 
+interface FieldTypeLogin {
+    email: string,
+    password: string,
+}
+
+interface FieldTypeForgotPassword {
+    email: string,
+}
+
+interface FieldTypeVerifyUser {
+    token: string,
+}
+
+interface FieldTypeResetPassword {
+    email: string,
+    otp: string,
+    password: string,
+}
+
+interface FieldTypeChangePassword {
+    prevPassword: string,
+    newPassword: string,
+}
+
 interface FieldTypeSelfInfoMain {
     email: string,
     id: string
@@ -24,16 +47,17 @@ interface FieldTypeSelfInfoMain {
     },
 }
 
+interface ResponseTypeLoginData {
+    emailId: string
+    fullName: string
+    id: string
+    token: string
+}
+
 const CHANGE_PASSWORD = {
   REQUEST: 'CHANGE_PASSWORD_REQUEST',
   SUCCESS: 'CHANGE_PASSWORD_SUCCESS',
   FAILURE: 'CHANGE_PASSWORD_FAILURE',
-}
-
-const COMPLETE_NEW_PASSWORD = {
-  REQUEST: 'COMPLETE_NEW_PASSWORD_REQUEST',
-  SUCCESS: 'COMPLETE_NEW_PASSWORD_SUCCESS',
-  FAILURE: 'COMPLETE_NEW_PASSWORD_FAILURE',
 }
 
 const LOGIN = {
@@ -60,11 +84,5 @@ const LOG_OUT = {
   FAILURE : 'LOG_OUT_FAILURE',
 }
 
-const GET_SELF_INFO = {
-  REQUEST : 'GET_SELF_INFO_REQUEST',
-  SUCCESS : 'GET_SELF_INFO_SUCCESS',
-  FAILURE : 'GET_SELF_INFO_FAILURE',
-}
-
-export type { AuthReducerState, FieldTypeSelfInfoMain }
-export { CHANGE_PASSWORD, COMPLETE_NEW_PASSWORD, FORGOT_PASSWORD, RESET_PASSWORD, LOGIN, LOG_OUT, GET_SELF_INFO }
+export type { AuthReducerState, FieldTypeSelfInfoMain, ResponseTypeLoginData, FieldTypeLogin, FieldTypeResetPassword, FieldTypeForgotPassword, FieldTypeChangePassword, FieldTypeVerifyUser }
+export { CHANGE_PASSWORD, FORGOT_PASSWORD, RESET_PASSWORD, LOGIN, LOG_OUT }

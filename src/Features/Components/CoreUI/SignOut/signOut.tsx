@@ -1,5 +1,5 @@
 import { Button } from 'antd'
-import { NotifierTitle, OperationStatus } from '../../../../Utils/enums'
+import { OperationStatus } from '../../../../Utils/enums'
 import React, { FC, useEffect } from 'react'
 import { logOut } from '../../../../Redux'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,7 +7,6 @@ import { RootDispatch } from '../../../../Redux/Store'
 import { AuthReducerState } from '../../../../Redux/AuthRedux/AuthTypes'
 import { useHistory } from 'react-router-dom'
 import { RootState } from '../../../../Redux/rootReducers'
-import { notifier } from '../../../../Utils/Notifiers/Notifier'
 
 export const SignOutBut: FC = () => {
 
@@ -21,7 +20,6 @@ export const SignOutBut: FC = () => {
 
   useEffect(()=>{
     if(operationStatus.logout === OperationStatus.SUCCEEDED){
-      notifier.success(NotifierTitle.LOG_OUT)
       history.push('/auth/login')
     }
   },[operationStatus, history])

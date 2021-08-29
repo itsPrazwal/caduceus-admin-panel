@@ -9,7 +9,7 @@ import { ValidateErrorEntity } from 'rc-field-form/lib/interface'
 import { FunctionWithParam } from '../../../Utils/types'
 
 interface FormEnterOTPProps{
-    onFinish: FunctionWithParam<FinishObject>,
+  onFinish: FunctionWithParam<FinishObject>,
 }
 
 interface FinishObject{

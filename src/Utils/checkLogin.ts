@@ -1,6 +1,7 @@
 import { LocalStorageKeys } from './enums'
+import { AxiosError } from 'axios'
 
-const loginExpired = err => {
+const loginExpired = (err: AxiosError): boolean => {
   if (err.response) {
     if (err.response.status === 440) {
       localStorage.clear()
@@ -12,10 +13,9 @@ const loginExpired = err => {
   }else{
     return false
   }
-
 }
 
-const invalidUser = err => {
+const invalidUser = (err: AxiosError): boolean => {
   if (err.response) {
     if (err.response.status === 401) {
       localStorage.clear()

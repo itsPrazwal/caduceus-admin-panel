@@ -10,8 +10,7 @@ import { RootDispatch } from '../../../Redux/Store'
 
 import { OperationStatus } from '../../../Utils/enums'
 
-import { AuthReducerState } from '../../../Redux/AuthRedux/AuthTypes'
-import { LoginFieldType } from '../../../Utils/types'
+import { AuthReducerState, FieldTypeLogin } from '../../../Redux/AuthRedux/AuthTypes'
 import { RootState } from '../../../Redux/rootReducers'
 import { labels } from '../../../Utils/en'
 
@@ -28,7 +27,7 @@ export const Login:FC = () => {
     }
   },[operationStatus, history, dispatch])
 
-  const onFinish = (values: LoginFieldType) => {
+  const onFinish = (values: FieldTypeLogin) => {
     dispatch(login.request(values))
   }
 

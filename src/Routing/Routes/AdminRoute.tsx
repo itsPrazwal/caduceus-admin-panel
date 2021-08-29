@@ -12,7 +12,7 @@ export const AdminRoute:FC<RouteChildrenProps> = props => {
     <RouteGuard {...props}>
       <AdminLayout>
         <Switch>
-          <Redirect exact from={`${props?.match?.path}/`} to={`${props?.match?.path}/organization`} />
+          <Redirect exact from={`${props?.match?.path}/`} to={`${props?.match?.path}/dashboard`} />
           <Route exact path={`${props?.match?.path}/dashboard`} component={LandingPage} />
           <Redirect to="/notFound" />
         </Switch>

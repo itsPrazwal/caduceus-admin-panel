@@ -56,32 +56,6 @@ export interface ContentFileWithLabel {
     index: number,
 }
 
-/** COMPONENT TYPES */
-export interface LoginFieldType {
-    email: string,
-    password: string,
-}
-
-export interface ForgotPasswordFieldType {
-    email: string,
-}
-
-export interface ResetPasswordFieldType {
-    email: string,
-    otp: string,
-    password: string,
-}
-
-export interface ChangePasswordFieldType {
-    oldPassword: string,
-    password: string,
-}
-
-export interface CompleteNewPasswordFieldType {
-    user: GenericObject,
-    password: string,
-}
-
 interface SideMenuItems {
     label: string,
     path: string,

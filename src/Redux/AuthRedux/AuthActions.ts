@@ -1,22 +1,23 @@
 import {
-  ChangePasswordFieldType,
-  CompleteNewPasswordFieldType,
-  ErrorObject, ForgotPasswordFieldType,
-  LoginFieldType,
-  ReducerActionType, ResetPasswordFieldType
+  ErrorObject,
+  ReducerActionType
 } from '../../Utils/types'
 import {
   CHANGE_PASSWORD,
-  COMPLETE_NEW_PASSWORD,
   FORGOT_PASSWORD,
+  FieldTypeChangePassword,
+  FieldTypeForgotPassword,
+  FieldTypeLogin,
+  FieldTypeResetPassword,
   LOGIN,
-  LOG_OUT, RESET_PASSWORD,
+  LOG_OUT,
+  RESET_PASSWORD,
 } from './AuthTypes'
 import { AxiosResponse } from 'axios'
 
 //LOGIN ACTIONS
 const login = {
-  request: (params: LoginFieldType): ReducerActionType => ({
+  request: (params: FieldTypeLogin): ReducerActionType => ({
     type: LOGIN.REQUEST,
     payload: params
   }),
@@ -32,7 +33,7 @@ const login = {
 
 //CHANGE PASSWORD ACTIONS
 const changePassword = {
-  request : (params: ChangePasswordFieldType): ReducerActionType => ({
+  request : (params: FieldTypeChangePassword): ReducerActionType => ({
     type: CHANGE_PASSWORD.REQUEST,
     payload: params
   }),
@@ -46,25 +47,9 @@ const changePassword = {
   })
 }
 
-//COMPLETE NEW PASSWORD ACTIONS
-const completeNewPassword = {
-  request: (params: CompleteNewPasswordFieldType): ReducerActionType => ({
-    type: COMPLETE_NEW_PASSWORD.REQUEST,
-    payload: params
-  }),
-  success: (response: AxiosResponse): ReducerActionType => ({
-    type: COMPLETE_NEW_PASSWORD.SUCCESS,
-    payload: response
-  }),
-  failure: (error: ErrorObject): ReducerActionType => ({
-    type: COMPLETE_NEW_PASSWORD.FAILURE,
-    payload: error
-  })
-}
-
 //FORGOT PASSWORD ACTIONS
 const forgotPassword = {
-  request: (params: ForgotPasswordFieldType): ReducerActionType => ({
+  request: (params: FieldTypeForgotPassword): ReducerActionType => ({
     type: FORGOT_PASSWORD.REQUEST,
     payload: params
   }),
@@ -80,7 +65,7 @@ const forgotPassword = {
 
 //COMPLETE NEW PASSWORD ACTIONS
 const resetPassword = {
-  request: (params: ResetPasswordFieldType): ReducerActionType => ({
+  request: (params: FieldTypeResetPassword): ReducerActionType => ({
     type: RESET_PASSWORD.REQUEST,
     payload: params
   }),
@@ -99,9 +84,8 @@ const logOut = {
   request: (): ReducerActionType => ({
     type: LOG_OUT.REQUEST
   }),
-  success: (response: AxiosResponse): ReducerActionType => ({
+  success: (): ReducerActionType => ({
     type: LOG_OUT.SUCCESS,
-    payload: response
   }),
   failure: (error: ErrorObject): ReducerActionType => ({
     type: LOG_OUT.FAILURE,
@@ -109,7 +93,7 @@ const logOut = {
   })
 }
 
-export { changePassword, completeNewPassword, forgotPassword, login, resetPassword, logOut }
+export { changePassword, forgotPassword, login, resetPassword, logOut }
 
 
 

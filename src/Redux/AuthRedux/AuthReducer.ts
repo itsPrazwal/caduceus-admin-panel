@@ -2,13 +2,12 @@ import { Reducer } from 'redux'
 import {
   AuthReducerState,
   CHANGE_PASSWORD,
-  COMPLETE_NEW_PASSWORD,
   FORGOT_PASSWORD,
   LOGIN,
   LOG_OUT,
   RESET_PASSWORD,
 } from './AuthTypes'
-import { ErrorObject, GenericObject, ReducerActionType } from '../../Utils/types'
+import { ErrorObject, ReducerActionType } from '../../Utils/types'
 import { OperationStatus } from '../../Utils/enums'
 
 const initialOperationStatus = {
@@ -21,7 +20,6 @@ const initialOperationStatus = {
 }
 
 const initialState: AuthReducerState = {
-  cognitoDetails: {},
   error: null,
   operationStatus: initialOperationStatus,
   userInformation: null
@@ -37,7 +35,6 @@ export const AuthReducer: Reducer<AuthReducerState,
         return {
           ...state,
           operationStatus: { ...state.operationStatus, login: OperationStatus.SUCCEEDED },
-          cognitoDetails: action.payload as GenericObject,
           error: null
         }
       case LOGIN.FAILURE:
@@ -51,12 +48,6 @@ export const AuthReducer: Reducer<AuthReducerState,
         return { ...state, error: null, operationStatus: { ...state.operationStatus, changePassword: OperationStatus.SUCCEEDED } }
       case CHANGE_PASSWORD.FAILURE:
         return { ...state, error: action.payload as ErrorObject, operationStatus: { ...state.operationStatus, changePassword: OperationStatus.FAILED } }
-      case COMPLETE_NEW_PASSWORD.REQUEST:
-        return { ...state, operationStatus: { ...initialOperationStatus, newPassword: OperationStatus.IN_PROGRESS } }
-      case COMPLETE_NEW_PASSWORD.SUCCESS:
-        return { ...state, operationStatus: { ...state.operationStatus, newPassword: OperationStatus.SUCCEEDED }, error: null }
-      case COMPLETE_NEW_PASSWORD.FAILURE:
-        return { ...state, error: action.payload as ErrorObject, operationStatus: { ...state.operationStatus, newPassword: OperationStatus.FAILED } }
       case FORGOT_PASSWORD.REQUEST:
         return { ...state, operationStatus: { ...initialOperationStatus, email: OperationStatus.IN_PROGRESS } }
       case FORGOT_PASSWORD.SUCCESS:

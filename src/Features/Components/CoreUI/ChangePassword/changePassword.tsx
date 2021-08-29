@@ -6,7 +6,7 @@ import { RootDispatch } from '../../../../Redux/Store'
 import { AuthReducerState } from '../../../../Redux/AuthRedux/AuthTypes'
 import { RootState } from '../../../../Redux/rootReducers'
 import { FormChangePassword } from '../../Auth'
-import { changePassword } from '../../../../Redux/AuthRedux/AuthActions'
+import { changePassword } from '../../../../Redux'
 import { FunctionWithNoParam, Nullable } from '../../../../Utils/types'
 
 export const ChangePassword: FC = () => {
@@ -25,7 +25,7 @@ export const ChangePassword: FC = () => {
 
   const onChangePasswordComplete = async ({ password }: {password: string}) => {
     if(oldPassword){
-      dispatch(changePassword.request({ password, oldPassword }))
+      dispatch(changePassword.request({ newPassword: password, prevPassword: oldPassword }))
     }else{
       setError('Old password is required.')
     }

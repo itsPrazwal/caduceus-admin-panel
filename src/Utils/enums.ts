@@ -32,5 +32,6 @@ export enum LocalStorageKeys {
   TOKEN_2='cov',
   TOKEN_3='lod',
   EXPIRY='uep',
-  USER_ID='uri'
+  USER_ID='uri',
+  RESET_STATE='rps'
 }

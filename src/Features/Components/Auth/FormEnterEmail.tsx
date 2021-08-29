@@ -8,8 +8,8 @@ import { FunctionWithParam } from '../../../Utils/types'
 import { validateEmail } from '../../../Utils/validation'
 
 interface FormEnterEmailProps{
-    onFinish: FunctionWithParam<FinishObject>,
-    emailSubmitted: boolean
+  onFinish: FunctionWithParam<FinishObject>,
+  emailSubmitted: boolean
 }
 
 interface FinishObject{
@@ -38,7 +38,6 @@ export const FormEnterEmail:FC<FormEnterEmailProps> = ({ onFinish, emailSubmitte
     <Form
       layout="vertical"
       name="basic"
-      initialValues={{ remember: true }}
       onFinish={submitEmail}
       onChangeCapture={() => setError('')}
       form={form}
