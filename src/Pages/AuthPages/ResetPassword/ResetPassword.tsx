@@ -42,8 +42,6 @@ export const ResetPassword:FC = () => {
   const dispatch = useDispatch<RootDispatch>()
   const { operationStatus } = useSelector((state: RootState) => state.AuthReducer)
 
-
-
   useEffect(() => {
     const getDataFromLocal = async () => {
       try {

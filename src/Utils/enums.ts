@@ -19,6 +19,14 @@ export enum NotifierTitle{
   SEND_EMAIL = 'send email',
   RESET_PASSWORD = 'reset password',
   LOG_OUT = 'log out',
+  DISEASE = 'disease'
+}
+
+export enum NotifierTitleType {
+  LIST = 'list',
+  CREATE = 'create',
+  UPDATE = 'update',
+  DELETE = 'delete'
 }
 
 export enum OperationStatus{

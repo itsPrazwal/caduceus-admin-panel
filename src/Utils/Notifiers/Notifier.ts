@@ -1,18 +1,31 @@
 import { notification } from 'antd'
 import { error_messages, success_messages } from '../en'
-import { NotifierTitle } from '../enums'
-import { generateErrorMessage } from '../utilFunctions'
+import { NotifierTitle, NotifierTitleType } from '../enums'
+import { generateErrorMessage, generateSuccessMessage } from '../utilFunctions'
+import { FunctionWithParam, NotifierObject } from '../types'
 
-const success = (title: NotifierTitle, description?: string): void => {
+interface NotifierFunctionType {
+  title: NotifierTitle,
+  description?: string,
+  type?: NotifierTitleType
+}
+
+const success:FunctionWithParam<NotifierFunctionType> = ({ type, description, title }) => {
+  console.log('notifier', type)
+  const notifierObj: NotifierObject = type
+    ? generateSuccessMessage(title, type, description)
+    : {
+      message: success_messages[title].message,
+      description: description || success_messages[title].description,
+    }
   notification.success({
-    message: success_messages[title].message,
-    description: description || success_messages[title].description,
+    ...notifierObj,
     placement: 'bottomRight',
   })
 }
 
-const error = (title: NotifierTitle, description?: string): void => {
-  notification.error({ ...generateErrorMessage(title, description), placement: 'bottomRight', })
+const error:FunctionWithParam<NotifierFunctionType> = ({ type, description, title }) => {
+  notification.error({ ...generateErrorMessage(title, description, type), placement: 'bottomRight', })
 }
 
 const generic = (): void => {

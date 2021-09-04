@@ -1,13 +1,21 @@
-import { LocalStorageKeys, NotifierTitle } from './enums'
-import { error_messages } from './en'
-import { ErrorObject, FunctionWithParam, Nullable } from './types'
+import { LocalStorageKeys, NotifierTitle, NotifierTitleType } from './enums'
+import { error_messages, success_messages } from './en'
+import { FunctionWithParam, NotifierObject, Nullable } from './types'
 import moment, { Moment } from 'moment'
 import { validateLogin } from './checkLogin'
 
-export const generateErrorMessage = (title: NotifierTitle, description?: string): ErrorObject => ({
-  message: error_messages.default.message.replace('~~~', title),
+export const generateErrorMessage = (title: NotifierTitle, description?: string, type?: NotifierTitleType): NotifierObject => ({
+  message: error_messages.default.message.replace('~~~', type ? `${title} ${type}` : title),
   description: description || error_messages.default.description.replace('~~~', title)
 })
+
+export const generateSuccessMessage = (title: NotifierTitle, type: NotifierTitleType, description?: string): NotifierObject => {
+  console.log('generator')
+  return ({
+    message: success_messages.default.message.replace('~~~', title).replace('***', type),
+    description: description || success_messages.default.description.replace('~~~', title).replace('***', type)
+  })
+}
 
 export const disableDate =
     (current: Moment): boolean =>

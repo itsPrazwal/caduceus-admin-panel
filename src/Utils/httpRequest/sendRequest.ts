@@ -1,6 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios'
 
-import { GenericObject } from '../types'
 import { tokenAssembler } from '../utilFunctions'
 
 const getRootUrl = ():string => {
@@ -13,7 +12,8 @@ const sendRequest = async (
   method: 'POST' | 'GET' | 'PUT' | 'DELETE' = 'GET',
   path: string,
   secured = true,
-  body?: GenericObject,
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  body?: any,
 ): Promise<AxiosResponse> => {
 
   const getApi:AxiosInstance = axios.create({
@@ -33,7 +33,7 @@ const sendRequest = async (
   return getApi.request({
     method: method,
     url: path,
-    data: body,
+    ...((method === 'POST' || method === 'PUT') && { data: body, }),
     timeout: 5000,
   })
 }

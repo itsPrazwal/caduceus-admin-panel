@@ -12,7 +12,8 @@ const middleware = [sagaMiddleware]
 const persistConfig = {
   key: 'root',
   storage,
-  whiteList: ['OrganizationReducer', 'AuthReducer', 'UserReducer', 'PortalReducer'],
+  whiteList: ['AuthReducer'],
+  blacklist: ['DiseaseReducer']
 }
 
 // @ts-ignore

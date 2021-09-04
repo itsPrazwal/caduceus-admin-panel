@@ -25,12 +25,12 @@ function* tryLogin(params: ReducerActionType) {
     if (!res) throw NotifierTitle.GENERIC
     const { data: { id, token } } = res
     setLocalStorageAfterLogin({ id, token })
-    notifier.success(NotifierTitle.LOGIN)
+    notifier.success({ title: NotifierTitle.LOGIN })
     yield put(login.success(res))
   } catch (err) {
     const errMessage = (err as AxiosError).response?.data.message
     yield put(login.failure(generateErrorMessage(NotifierTitle.LOGIN, errMessage)))
-    notifier.error(NotifierTitle.LOGIN, errMessage)
+    notifier.error({ title: NotifierTitle.LOGIN, description: errMessage })
   }
   return true
 }
@@ -44,10 +44,10 @@ function* tryLogOut() {
   try {
     localStorage.clear()
     yield put(logOut.success())
-    notifier.success(NotifierTitle.LOG_OUT)
+    notifier.success({ title: NotifierTitle.LOG_OUT })
   } catch (err) {
     yield put(login.failure(generateErrorMessage(NotifierTitle.LOG_OUT)))
-    notifier.error(NotifierTitle.LOG_OUT)
+    notifier.error({ title: NotifierTitle.LOG_OUT })
   }
   return true
 }
@@ -62,12 +62,12 @@ function* tryForgotPassword(params: ReducerActionType<FieldTypeForgotPassword>) 
   try {
     const res: AxiosResponse = yield call(apiAuthForgotPassword, payload as FieldTypeForgotPassword)
     if (!res) throw NotifierTitle.GENERIC
-    notifier.success(NotifierTitle.SEND_EMAIL)
+    notifier.success({ title: NotifierTitle.SEND_EMAIL })
     yield put(forgotPassword.success(res))
   } catch (err) {
     const errMessage = (err as AxiosError).response?.data.message
     yield put(forgotPassword.failure(generateErrorMessage(NotifierTitle.SEND_EMAIL, errMessage)))
-    notifier.error(NotifierTitle.SEND_EMAIL, errMessage)
+    notifier.error({ title: NotifierTitle.SEND_EMAIL, description: errMessage })
   }
   return true
 }
@@ -82,12 +82,12 @@ function* tryResetPassword(params: ReducerActionType<FieldTypeResetPassword>) {
   try {
     const res: AxiosResponse = yield call(apiAuthResetPassword, payload as FieldTypeResetPassword)
     if (!res) throw NotifierTitle.GENERIC
-    notifier.success(NotifierTitle.RESET_PASSWORD)
+    notifier.success({ title: NotifierTitle.RESET_PASSWORD })
     yield put(resetPassword.success(res))
   } catch (err) {
     const errMessage = (err as AxiosError).response?.data.message
     yield put(resetPassword.failure(generateErrorMessage(NotifierTitle.RESET_PASSWORD, errMessage)))
-    notifier.error(NotifierTitle.RESET_PASSWORD, errMessage)
+    notifier.error({ title: NotifierTitle.RESET_PASSWORD, description: errMessage })
   }
   return true
 }
@@ -102,12 +102,12 @@ function* tryChangePassword(params: ReducerActionType<FieldTypeChangePassword>) 
   try {
     const res: AxiosResponse = yield call(apiAuthChangePassword, payload as FieldTypeChangePassword)
     if (!res) throw NotifierTitle.GENERIC
-    notifier.success(NotifierTitle.CHANGE_PASSWORD)
+    notifier.success({ title: NotifierTitle.CHANGE_PASSWORD })
     yield put(changePassword.success(res))
   } catch (err) {
     const errMessage = (err as AxiosError).response?.data.message
     yield put(changePassword.failure(generateErrorMessage(NotifierTitle.CHANGE_PASSWORD, errMessage)))
-    notifier.error(NotifierTitle.CHANGE_PASSWORD, errMessage)
+    notifier.error({ title: NotifierTitle.CHANGE_PASSWORD, description: errMessage })
   }
   return true
 }

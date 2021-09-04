@@ -51,6 +51,13 @@ export interface FormDataWithFile<T> {
     contentFile: Nullable<File | ContentFileWithLabel[]>
 }
 
+/** Common response type */
+export interface ResponseTypeCommon<T> {
+    result: boolean,
+    message: string,
+    data: T
+}
+
 export interface ContentFileWithLabel {
     file: File,
     index: number,
@@ -65,4 +72,13 @@ interface SideMenuItems {
 
 export interface SideMenuProps extends SideMenuItems{
     subMenu: SideMenuItems[] | []
+}
+
+export interface FieldTypeRemoveItem {
+    _id: string
+}
+
+export interface NotifierObject {
+    message: string,
+    description: string,
 }

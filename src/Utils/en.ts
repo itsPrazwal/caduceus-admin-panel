@@ -56,6 +56,10 @@ const error_messages = {
 }
 
 const success_messages = {
+  default: {
+    message: 'Succeeded - *** ~~~',
+    description: '~~~ has been ***ed successfully.'
+  },
   [NotifierTitle.LOGIN]: { message: 'Logged in Successfully.', description: 'You have been logged in.' },
   [NotifierTitle.LOG_OUT]: { message: 'Logged out Successfully.', description: 'You have been logged out.' },
   [NotifierTitle.CHANGE_PASSWORD]: { message: 'Password Changed Successfully.', description: 'Your password has been changed.' },
