@@ -6,6 +6,7 @@ import { LOG_OUT } from './AuthRedux/AuthTypes'
 import { ReducerActionType } from '../Utils/types'
 import { DiseaseReducer } from './Diseases/Reducer'
 import { DepartmentReducer } from './Department/Reducer'
+import { BloodBankReducer } from './BloodBank/Reducer'
 
 export const toPersistReducers = {
   AuthReducer,
@@ -13,7 +14,8 @@ export const toPersistReducers = {
 const appReducer = combineReducers({
   ...toPersistReducers,
   DiseaseReducer,
-  DepartmentReducer
+  DepartmentReducer,
+  BloodBankReducer,
 })
 
 const rootReducer = (state: CombinedState<RootState>, action: ReducerActionType): RootState => {

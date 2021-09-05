@@ -21,6 +21,7 @@ export enum NotifierTitle{
   LOG_OUT = 'log out',
   DISEASE = 'disease',
   DEPARTMENT = 'department',
+  BLOOD_BANK = 'blood bank'
 }
 
 export enum NotifierTitleType {
