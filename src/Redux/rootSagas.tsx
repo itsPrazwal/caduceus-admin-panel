@@ -5,6 +5,7 @@ import BloodBankRootSaga from './BloodBank/Saga'
 import DepartmentRootSaga from './Department/Saga'
 import DiseaseRootSaga from './Diseases/Saga'
 import EventRootSaga from './Events/Saga'
+import AmbulanceRootSaga from './Ambulance/Saga'
 
 export default function* rootSagas(): Generator {
   yield all([
@@ -12,6 +13,7 @@ export default function* rootSagas(): Generator {
     BloodBankRootSaga(),
     DepartmentRootSaga(),
     DiseaseRootSaga(),
-    EventRootSaga()
+    EventRootSaga(),
+    AmbulanceRootSaga()
   ])
 }
