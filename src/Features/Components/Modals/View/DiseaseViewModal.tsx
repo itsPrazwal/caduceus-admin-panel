@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import { FieldTypeDiseaseMain } from '../../../../Redux/Diseases/Types'
-import { Col, Divider, Empty, List, Modal, Row, Tag, Typography } from 'antd'
+import { Empty, Modal, Typography } from 'antd'
 import { FunctionWithNoParam, Nullable } from '../../../../Utils/types'
-import { CheckCircleOutlined } from '@ant-design/icons'
+import { ListedRow, TaggedRow } from '../../CoreUI/DataDisplay'
 
 interface DiseaseViewModalProps {
     modalVisibility: boolean,
@@ -35,42 +35,5 @@ export const DiseaseViewModal:FC<DiseaseViewModalProps> = ({ viewData, modalVisi
         : <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Disease data not found." />
       }
     </Modal>
-  )
-}
-
-const ListedRow:FC<{data?: string[], title: string }> = ({ data, title }) => {
-  return(
-    <Row style={{ marginBottom: '20px' }}>
-      <Col span={24}>
-        {data && data.length > 0
-          ? <List
-            size="small"
-            header={<Typography.Title level={5}>{title}</Typography.Title>}
-            dataSource={data}
-            renderItem={(item, i) => <List.Item>{`${i+1}:   ${item}`}</List.Item>}
-          />
-          : <>
-            <Typography.Title level={5}>{title}</Typography.Title>
-            <Divider  />
-            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-          </>
-        }
-      </Col>
-    </Row>
-  )
-}
-
-const TaggedRow:FC<{data?: string[], title: string }> = ({ data, title }) => {
-  return(
-    <Row style={{ marginBottom: '20px' }}>
-      <Col span={24}>
-        <Typography.Title level={5}>{title}</Typography.Title>
-        <Divider  />
-        {data && data.length > 0
-          ? data.map(da => <Tag key={da} color="cyan"><CheckCircleOutlined /> {da}</Tag>)
-          : <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-        }
-      </Col>
-    </Row>
   )
 }

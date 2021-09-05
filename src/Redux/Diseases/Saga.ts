@@ -5,8 +5,8 @@ import { notifier } from '../../Utils/Notifiers/Notifier'
 import {
   ACTION,
   ResponseTypeDiseaseCreate,
-  ResponseTypeDiseaseDelete,
   ResponseTypeDiseaseList,
+  ResponseTypeDiseaseRemove,
   ResponseTypeDiseaseUpdate
 } from './Types'
 import { diseaseAction } from './Action'
@@ -64,21 +64,21 @@ function* watchDiseaseUpdate(): Generator {
   yield takeEvery(ACTION.DISEASE_UPDATE.REQUEST, handleDiseaseUpdateRequest)
 }
 
-//DISEASE DELETE SAGA
+//DISEASE REMOVE SAGA
 function* handleDiseaseDeleteRequest(payload) {
   try {
-    const res: ResponseTypeDiseaseDelete = yield call(() => diseaseApis.remove(payload.payload))
+    const res: ResponseTypeDiseaseRemove = yield call(() => diseaseApis.remove(payload.payload))
     if (!res?.data?.result || !res) throw { message: res.data?.message } as ErrorObject
-    notifier.success({ title: NotifierTitle.DISEASE, type: NotifierTitleType.DELETE })
+    notifier.success({ title: NotifierTitle.DISEASE, type: NotifierTitleType.REMOVE })
     yield put(diseaseAction.remove.success(res))
   } catch (err) {
-    yield put(diseaseAction.remove.failure(generateErrorMessage(NotifierTitle.DISEASE, (err as AxiosError)?.message || '', NotifierTitleType.DELETE)))
-    notifier.error({ title: NotifierTitle.DISEASE, description: (err as AxiosError)?.message, type: NotifierTitleType.DELETE })
+    yield put(diseaseAction.remove.failure(generateErrorMessage(NotifierTitle.DISEASE, (err as AxiosError)?.message || '', NotifierTitleType.REMOVE)))
+    notifier.error({ title: NotifierTitle.DISEASE, description: (err as AxiosError)?.message, type: NotifierTitleType.REMOVE })
   }
 }
 
 function* watchDiseaseDelete(): Generator {
-  yield takeEvery(ACTION.DISEASE_DELETE.REQUEST, handleDiseaseDeleteRequest)
+  yield takeEvery(ACTION.DISEASE_REMOVE.REQUEST, handleDiseaseDeleteRequest)
 }
 
 

@@ -25,7 +25,7 @@ interface FieldTypeDiseaseMain extends FieldTypeDiseaseCreate {
 type ResponseTypeDiseaseList = AxiosResponse<ResponseTypeCommon<FieldTypeDiseaseMain[]>>
 type ResponseTypeDiseaseCreate = AxiosResponse<ResponseTypeCommon<FieldTypeDiseaseMain>>
 type ResponseTypeDiseaseUpdate = AxiosResponse<ResponseTypeCommon<FieldTypeDiseaseMain>>
-type ResponseTypeDiseaseDelete = AxiosResponse<ResponseTypeCommon<FieldTypeRemoveItem>>
+type ResponseTypeDiseaseRemove = AxiosResponse<ResponseTypeCommon<FieldTypeRemoveItem>>
 
 interface ReducerDiseaseType extends CommonReducerState {
     diseaseData: Nullable<FieldTypeDiseaseMain[]>,
@@ -33,7 +33,7 @@ interface ReducerDiseaseType extends CommonReducerState {
         list: Nullable<OperationStatus>,
         create: Nullable<OperationStatus>,
         update: Nullable<OperationStatus>,
-        statusToggle: Nullable<OperationStatus>,
+        remove: Nullable<OperationStatus>,
     },
     diseaseLastFetchedTime: number
 }
@@ -56,10 +56,10 @@ const DISEASE_UPDATE = {
   FAILURE: 'DISEASE_UPDATE_FAILURE',
 }
 
-const DISEASE_DELETE = {
-  REQUEST: 'DISEASE_DELETE_REQUEST',
-  SUCCESS: 'DISEASE_DELETE_SUCCESS',
-  FAILURE: 'DISEASE_DELETE_FAILURE',
+const DISEASE_REMOVE = {
+  REQUEST: 'DISEASE_REMOVE_REQUEST',
+  SUCCESS: 'DISEASE_REMOVE_SUCCESS',
+  FAILURE: 'DISEASE_REMOVE_FAILURE',
 }
 
 export type {
@@ -67,7 +67,7 @@ export type {
   FieldTypeDiseaseMain,
   FieldTypeDiseaseUpdate,
   ReducerDiseaseType,
-  ResponseTypeDiseaseList, ResponseTypeDiseaseCreate, ResponseTypeDiseaseUpdate, ResponseTypeDiseaseDelete
+  ResponseTypeDiseaseList, ResponseTypeDiseaseCreate, ResponseTypeDiseaseUpdate, ResponseTypeDiseaseRemove
 }
 
-export const ACTION = { DISEASE_CREATE, DISEASE_LIST, DISEASE_UPDATE, DISEASE_DELETE }
+export const ACTION = { DISEASE_CREATE, DISEASE_LIST, DISEASE_UPDATE, DISEASE_REMOVE }

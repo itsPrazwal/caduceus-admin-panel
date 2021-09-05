@@ -13,7 +13,7 @@ const persistConfig = {
   key: 'root',
   storage,
   whiteList: ['AuthReducer'],
-  blacklist: ['DiseaseReducer']
+  blacklist: ['DiseaseReducer', 'DepartmentReducer']
 }
 
 // @ts-ignore

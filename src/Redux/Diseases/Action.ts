@@ -4,8 +4,8 @@ import {
   FieldTypeDiseaseCreate,
   FieldTypeDiseaseUpdate,
   ResponseTypeDiseaseCreate,
-  ResponseTypeDiseaseDelete,
   ResponseTypeDiseaseList,
+  ResponseTypeDiseaseRemove,
   ResponseTypeDiseaseUpdate,
 } from './Types'
 
@@ -55,15 +55,15 @@ const update = {
 
 const remove = {
   request : (payload: FieldTypeRemoveItem): ReducerActionType<FieldTypeRemoveItem> => ({
-    type: ACTION.DISEASE_DELETE.REQUEST,
+    type: ACTION.DISEASE_REMOVE.REQUEST,
     payload
   }),
-  success : (response: ResponseTypeDiseaseDelete): ReducerActionType<unknown, ResponseTypeDiseaseDelete> => ({
-    type: ACTION.DISEASE_DELETE.SUCCESS,
+  success : (response: ResponseTypeDiseaseRemove): ReducerActionType<unknown, ResponseTypeDiseaseRemove> => ({
+    type: ACTION.DISEASE_REMOVE.SUCCESS,
     response
   }),
   failure : (error: ErrorObject): ReducerActionType => ({
-    type: ACTION.DISEASE_DELETE.FAILURE,
+    type: ACTION.DISEASE_REMOVE.FAILURE,
     error
   })
 }

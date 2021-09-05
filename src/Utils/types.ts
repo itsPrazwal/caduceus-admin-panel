@@ -42,7 +42,6 @@ export interface CommonReducerState {
 export interface SelectOptionDataType {
     name: string,
     value: string,
-    enabled?: boolean,
 }
 
 /** Object having Form data with file */

@@ -3,8 +3,8 @@ import sendRequest from '../../Utils/httpRequest/sendRequest'
 import { FieldTypeRemoveItem } from '../../Utils/types'
 import {
   ResponseTypeDiseaseCreate,
-  ResponseTypeDiseaseDelete,
   ResponseTypeDiseaseList,
+  ResponseTypeDiseaseRemove,
   ResponseTypeDiseaseUpdate
 } from './Types'
 
@@ -19,7 +19,7 @@ const create = async (payload: Types.FieldTypeDiseaseCreate): Promise<ResponseTy
 const update = async (payload: Types.FieldTypeDiseaseUpdate): Promise<ResponseTypeDiseaseUpdate> =>
   sendRequest('PUT', `${path}/${payload._id}`, true, payload)
 
-const remove = async (payload: FieldTypeRemoveItem): Promise<ResponseTypeDiseaseDelete> =>
+const remove = async (payload: FieldTypeRemoveItem): Promise<ResponseTypeDiseaseRemove> =>
   sendRequest('DELETE', `${path}/${payload._id}`, true)
 
 export default { list, create, remove, update }

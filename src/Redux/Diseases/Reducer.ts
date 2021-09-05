@@ -4,8 +4,8 @@ import {
   FieldTypeDiseaseMain,
   FieldTypeDiseaseUpdate,
   ReducerDiseaseType,
-  ResponseTypeDiseaseCreate, ResponseTypeDiseaseDelete,
-  ResponseTypeDiseaseList, ResponseTypeDiseaseUpdate,
+  ResponseTypeDiseaseCreate, ResponseTypeDiseaseList,
+  ResponseTypeDiseaseRemove, ResponseTypeDiseaseUpdate,
 } from './Types'
 import { Reducer } from 'redux'
 import { ErrorObject, FieldTypeRemoveItem, ReducerActionType } from '../../Utils/types'
@@ -13,7 +13,7 @@ import { OperationStatus } from '../../Utils/enums'
 
 const initialOperationStatus = {
   list: null,
-  statusToggle: null,
+  remove: null,
   create: null,
   update: null,
 }
@@ -31,7 +31,7 @@ const initialReducerStateDisease: ReducerDiseaseType = {
 }
 
 export const DiseaseReducer:Reducer<ReducerDiseaseType, ReducerActionType<FieldTypeDiseaseCreate | FieldTypeDiseaseUpdate | FieldTypeRemoveItem,
-    ResponseTypeDiseaseCreate | ResponseTypeDiseaseList | ResponseTypeDiseaseUpdate | ResponseTypeDiseaseDelete>> = (state = initialReducerStateDisease, action): ReducerDiseaseType => {
+    ResponseTypeDiseaseCreate | ResponseTypeDiseaseList | ResponseTypeDiseaseUpdate | ResponseTypeDiseaseRemove>> = (state = initialReducerStateDisease, action): ReducerDiseaseType => {
       switch (action.type) {
       // LIST DISEASE
       case ACTION.DISEASE_LIST.REQUEST: return ({ ...state, ...initialErrorMessageState, operationStatus: { ...initialOperationStatus, list: OperationStatus.IN_PROGRESS } })
@@ -76,20 +76,20 @@ export const DiseaseReducer:Reducer<ReducerDiseaseType, ReducerActionType<FieldT
       }
       case ACTION.DISEASE_UPDATE.FAILURE:  return ({ ...state, error: action.error as ErrorObject, message: '', operationStatus: { ...initialOperationStatus, update: OperationStatus.FAILED } })
 
-        // DELETE DISEASE
-      case ACTION.DISEASE_DELETE.REQUEST: return ({ ...state, ...initialErrorMessageState, operationStatus: { ...initialOperationStatus, statusToggle: OperationStatus.IN_PROGRESS } })
-      case ACTION.DISEASE_DELETE.SUCCESS: {
+        // REMOVE DISEASE
+      case ACTION.DISEASE_REMOVE.REQUEST: return ({ ...state, ...initialErrorMessageState, operationStatus: { ...initialOperationStatus, remove: OperationStatus.IN_PROGRESS } })
+      case ACTION.DISEASE_REMOVE.SUCCESS: {
         console.log('here in red')
-        const diseaseId: string = (action?.response as ResponseTypeDiseaseDelete)?.data?.data._id
+        const diseaseId: string = (action?.response as ResponseTypeDiseaseRemove)?.data?.data._id
         return {
           ...state,
           error: null,
-          message: (action?.response as ResponseTypeDiseaseDelete)?.data?.message,
+          message: (action?.response as ResponseTypeDiseaseRemove)?.data?.message,
           diseaseData: state.diseaseData?.filter(od => od._id !== diseaseId) as FieldTypeDiseaseMain[],
-          operationStatus: { ...initialOperationStatus, statusToggle: OperationStatus.SUCCEEDED }
+          operationStatus: { ...initialOperationStatus, remove: OperationStatus.SUCCEEDED }
         }
       }
-      case ACTION.DISEASE_DELETE.FAILURE:  return ({ ...state, error: action.error as ErrorObject, message: '', operationStatus: { ...initialOperationStatus, statusToggle: OperationStatus.FAILED } })
+      case ACTION.DISEASE_REMOVE.FAILURE:  return ({ ...state, error: action.error as ErrorObject, message: '', operationStatus: { ...initialOperationStatus, remove: OperationStatus.FAILED } })
       default:
         return state
       }
