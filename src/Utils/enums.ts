@@ -21,7 +21,8 @@ export enum NotifierTitle{
   LOG_OUT = 'log out',
   DISEASE = 'disease',
   DEPARTMENT = 'department',
-  BLOOD_BANK = 'blood bank'
+  BLOOD_BANK = 'blood bank',
+  EVENT = 'event'
 }
 
 export enum NotifierTitleType {
@@ -44,4 +45,9 @@ export enum LocalStorageKeys {
   EXPIRY='uep',
   USER_ID='uri',
   RESET_STATE='rps'
+}
+
+export enum EventCategory {
+  BLOOD = 'blood',
+  MEDICAL = 'medical'
 }
