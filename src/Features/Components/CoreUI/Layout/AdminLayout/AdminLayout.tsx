@@ -14,6 +14,11 @@ import { RootState } from '../../../../../Redux/rootReducers'
 const { Header, Sider, Content } = Layout
 const { SubMenu } = Menu
 
+interface ActiveKeys {
+  itemKey: string,
+  openKey: string,
+}
+
 const AdminLayout: FC = props => {
   const { children } = props
   const history = useHistory<History>()
@@ -24,7 +29,23 @@ const AdminLayout: FC = props => {
     setCollapsed(!collapsed)
   }
 
-  const activeKey = useMemo(() => AdminSideBarItems.reduce((acc, curr) => curr.path === history.location.pathname || '' ? curr.key.toString() : acc, '1'), [history])
+  const activeKeys: ActiveKeys = useMemo(() =>
+    AdminSideBarItems.reduce((acc:ActiveKeys, curr) => {
+      const _path = history.location.pathname
+      if(acc.itemKey === ''){
+        if(curr.path === ''){
+          curr.subMenu.map(csm => {
+            if(acc.itemKey === '' && _path.localeCompare(csm.path) === 0)
+              acc = { itemKey: csm.key, openKey: curr.key }
+          })
+        }else{
+          if(_path.localeCompare(curr.path) === 0)
+            acc = { ...acc, itemKey: curr.key }
+        }
+      }
+      return acc
+    }, { itemKey: '', openKey: '' }
+    ), [history])
 
   return(
     <Layout style={{ minHeight: '100vh' }}>
@@ -49,7 +70,7 @@ const AdminLayout: FC = props => {
           <div style={{ height: '32px', margin: '16px', background: 'rgba(255, 255, 255, 0.3)', alignItems: 'center', display: 'flex', justifyContent: 'center' }} title="User Role">
             <Typography.Text style={{ color: 'white' }}>ADMIN</Typography.Text>
           </div>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={[activeKey]} defaultOpenKeys={['sub1']}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={[activeKeys.itemKey]} defaultOpenKeys={[activeKeys.openKey]}>
             {AdminSideBarItems.map(each =>
               each.subMenu.length
                 ?

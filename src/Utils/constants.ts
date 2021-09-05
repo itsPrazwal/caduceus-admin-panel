@@ -30,59 +30,64 @@ const AdminSideBarItems: SideMenuProps[] = [
     subMenu: []
   },
   {
-    label: 'Blood Donor',
-    path: '/admin/blood-donor',
-    icon: UserOutlined,
-    key: '4',
-    subMenu: []
-  },
-  {
-    label: 'Hospital',
-    path: '',
-    icon: UserOutlined,
-    key: '5',
-    subMenu: [
-      {
-        label: 'List',
-        path: '/admin/hospital/list',
-        icon: UserOutlined,
-        key: '51',
-      },
-      {
-        label: 'Department',
-        path: '/admin/hospital/department',
-        icon: UserOutlined,
-        key: '52',
-      }
-    ]
-  },
-  {
     label: 'Disease',
     path: '/admin/disease',
     icon: UserOutlined,
-    key: '6',
-    subMenu: []
-  },
-  {
-    label: 'Doctor',
-    path: '/admin/doctor',
-    icon: UserOutlined,
-    key: '7',
+    key: '4',
     subMenu: []
   },
   {
     label: 'Events',
     path: '/admin/events',
     icon: UserOutlined,
-    key: '8',
+    key: '5',
     subMenu: []
   },
   {
-    label: 'Patient',
-    path: '/admin/patient',
+    label: 'Hospital',
+    path: '',
     icon: UserOutlined,
-    key: '9',
-    subMenu: []
+    key: '6',
+    subMenu: [
+      {
+        label: 'Department',
+        path: '/admin/hospital/department',
+        icon: UserOutlined,
+        key: '61',
+      },
+      {
+        label: 'List',
+        path: '/admin/hospital/list',
+        icon: UserOutlined,
+        key: '62',
+      },
+    ]
+  },
+  {
+    label: 'Users',
+    key: '7',
+    path: '',
+    icon: UserOutlined,
+    subMenu: [
+      {
+        label: 'Blood Donor',
+        path: '/admin/blood-donor',
+        icon: UserOutlined,
+        key: '71',
+      },
+      {
+        label: 'Doctor',
+        path: '/admin/doctor',
+        icon: UserOutlined,
+        key: '72',
+      },
+      {
+        label: 'Patient',
+        path: '/admin/patient',
+        icon: UserOutlined,
+        key: '73',
+      },
+    ]
   },
 ]
 
