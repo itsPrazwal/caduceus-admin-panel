@@ -9,18 +9,19 @@ interface FieldTypeHospitalCreate {
     speciality?: string[],
     detail?: string,
     email?: string,
-    ambulanceNumber?: number,
+    ambulanceNumber?: number[],
 }
 
 interface FieldTypeHospitalUpdate extends FieldTypeHospitalCreate{
     ambulanceId?: Nullable<string>,
-    ambulanceNumber?: number,
+    ambulanceNumber?: number[],
     _id: string,
 }
 
 interface FieldTypeHospitalMain extends FieldTypeHospitalCreate {
     _id: string,
     ambulanceId: Nullable<string>,
+    ambulanceNumber?: number[],
     deleted: boolean
 }
 

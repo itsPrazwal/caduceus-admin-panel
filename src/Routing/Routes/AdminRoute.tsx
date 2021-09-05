@@ -2,13 +2,9 @@ import React, { FC } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import { RouteChildrenProps } from 'react-router'
 
-import { DiseasePage, LandingPage } from '../../Pages'
+import { AmbulancePage, BloodBankPage, DepartmentPage, DiseasePage, EventPage, HospitalPage, LandingPage,  } from '../../Pages'
 import { RouteGuard } from '../RouteGuard'
 import { AdminLayout } from '../../Features/Components'
-import { DepartmentPage } from '../../Pages/DepartmentPage'
-import { BloodBankPage } from '../../Pages/BloodBankPage'
-import { EventPage } from '../../Pages/EventPage'
-import { AmbulancePage } from '../../Pages/AmbulancePage'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const AdminRoute:FC<RouteChildrenProps> = props => {
@@ -20,6 +16,8 @@ export const AdminRoute:FC<RouteChildrenProps> = props => {
           <Route exact path={`${props?.match?.path}/dashboard`} component={LandingPage} />
           <Route exact path={`${props?.match?.path}/disease`} component={DiseasePage} />
           <Route exact path={`${props?.match?.path}/hospital/department`} component={DepartmentPage} />
+          <Route exact path={`${props?.match?.path}/hospital/list`} component={HospitalPage} />
+          <Redirect exact from={`${props.match?.path}/hospital`} to={`${props.match?.path}/hospital/list`} />
           <Route exact path={`${props?.match?.path}/blood-bank`} component={BloodBankPage} />
           <Route exact path={`${props?.match?.path}/events`} component={EventPage} />
           <Route exact path={`${props?.match?.path}/ambulance`} component={AmbulancePage} />
