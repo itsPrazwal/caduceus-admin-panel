@@ -5,7 +5,7 @@ import { tokenAssembler } from '../utilFunctions'
 const getRootUrl = ():string => {
   const port = process.env.REACT_APP_API_PORT || 8000
   const dev = process.env.REACT_APP_NODE_ENV !== 'production'
-  return dev ? `http://localhost:${port}/api` : 'https://stark-fjord-70567.herokuapp.com'
+  return dev ? `http://localhost:${port}/api` : 'https://stark-fjord-70567.herokuapp.com/api'
 }
 
 const sendRequest = async (
