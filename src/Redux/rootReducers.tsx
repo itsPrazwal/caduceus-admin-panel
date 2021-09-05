@@ -9,6 +9,7 @@ import { DepartmentReducer } from './Department/Reducer'
 import { BloodBankReducer } from './BloodBank/Reducer'
 import { EventReducer } from './Events/Reducer'
 import { AmbulanceReducer } from './Ambulance/Reducer'
+import { HospitalReducer } from './Hospital/Reducer'
 
 export const toPersistReducers = {
   AuthReducer,
@@ -19,7 +20,8 @@ const appReducer = combineReducers({
   DepartmentReducer,
   BloodBankReducer,
   EventReducer,
-  AmbulanceReducer
+  AmbulanceReducer,
+  HospitalReducer
 })
 
 const rootReducer = (state: CombinedState<RootState>, action: ReducerActionType): RootState => {

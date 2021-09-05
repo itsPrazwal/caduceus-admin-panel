@@ -23,7 +23,8 @@ export enum NotifierTitle{
   DEPARTMENT = 'department',
   BLOOD_BANK = 'blood bank',
   EVENT = 'event',
-  AMBULANCE = 'ambulance'
+  AMBULANCE = 'ambulance',
+  HOSPITAL = 'hospital'
 }
 
 export enum NotifierTitleType {
